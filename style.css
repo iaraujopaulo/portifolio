@@ -1,8 +1,17 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: Ubuntu, sans-serif;
-  }
+    font-family: Arial, Ubuntu, sans-serif;
+}  
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family:  Arial, Ubuntu, sans-serif;
+}
   
   :root {
     --primary: #C94666;
@@ -113,6 +122,11 @@
     font-weight: bold;
     font-size: 56px;
   }
+
+  .technologies {
+  /*color: var(--secondary);
+  font-weight: bold;*/
+}
   
   #home .email-link {
     text-transform: uppercase;
