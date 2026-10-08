@@ -15,7 +15,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    top: -300px;
+    top: -400px;
     height: auto;
     position: fixed;
     transition: top 1s ease;
@@ -38,6 +38,11 @@
     line-height: inherit;
   }
 
+  .aside .menu-item-theme {
+    margin-top: 0;
+    padding: 12px 15px;
+  }
+
   .aside .menu-link {
     display: block;
     border-bottom: 1px solid #000;
@@ -49,7 +54,8 @@
     position: fixed;
     top: 0;
     right: 0;
-    background-color: #fff;
+    background-color: var(--bg);
+    color: var(--text);
     padding: 5px 8px;
     margin: 5px 10px;
     border-radius: 2px;
@@ -64,7 +70,7 @@
   }
 
   #menu-check:checked ~ main section {
-    padding-top: 210px;
+    padding-top: 280px;
   }
 
   #projects .card {

@@ -10,6 +10,19 @@
   <!-- Devicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
+
+  <!-- Aplica o tema salvo antes de renderizar (evita "piscar" branco) -->
+  <script>
+    (function () {
+      var theme = null;
+      try { theme = localStorage.getItem('theme'); } catch (e) {}
+      if (!theme) {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="projects.css">
   <link rel="stylesheet" href="mobile.css">
@@ -47,6 +60,11 @@
             <i class="fa-solid fa-flask"></i>
             Projetos
           </a>
+        </li>
+        <li class="menu-item menu-item-theme">
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Ativar tema escuro" aria-pressed="false">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+          </button>
         </li>
       </ul>
     </nav>
@@ -286,6 +304,30 @@
 </section>
 
   </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var icon = btn.querySelector('i');
+
+      function applyTheme(theme) {
+        var dark = theme === 'dark';
+        root.setAttribute('data-theme', theme);
+        icon.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        btn.setAttribute('aria-pressed', dark);
+        btn.setAttribute('aria-label', dark ? 'Ativar tema claro' : 'Ativar tema escuro');
+      }
+
+      applyTheme(root.getAttribute('data-theme') || 'light');
+
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        applyTheme(next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+  </script>
 </body>
 
 </html>
